@@ -8,6 +8,9 @@ Hana works by searching for `.work.luau`s in a directory which returns a functio
 
 Keep in mind that once the scheduler starts running, it will yield the calling coroutine until all imported coroutines + coroutines that were created during execution finish execution. As such, treat the calling coroutine *(or file)* as a starter function that purely starts the scheduling + all other pre/post execution.
 
+## Name
+The "Hana" name is actually a Hawaiian word which means Work, hence the primitives of Hana are called "Workables"!
+
 ## Usage
 Currently there is no documentation, though the source code is simple enough so go take a look at it.
 
