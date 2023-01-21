@@ -36,4 +36,4 @@ print("Execution is stopped!") -- this won't execute
 * Once a coroutine yields, it will only resume again in the next frame.
 * Lune V0.0.3+ is supported for running Hana.
 * The Lune project might potentially implement and expose a custom `task` library similar to Roblox's, which would be used for scheduling coroutines, until then, this library is useful!
-* You cam look both at the `.lune` and `test` dirs for examples. 
+* You can look both at the `.lune` and `test` dirs for examples. 
