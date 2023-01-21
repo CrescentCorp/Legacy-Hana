@@ -1,3 +1,3 @@
-local lib = require("src/init")
+local lib = require("Hana/init")
 
-lib("test")
+lib.start("test")

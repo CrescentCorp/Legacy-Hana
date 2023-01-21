@@ -4,33 +4,10 @@ Hana is an execution framework intended as a temporary solution for scheduling c
 
 Hana is built similarly to how Roblox's coroutine scheduler work as Hana acts as the main loop, so its `start` function (require("src/init")) is a yielding operation.
 
-Hana works by searching for `.work.luau`s in a directory which returns a function that expects a `wait` function. This wait function is responsible for registering the calling coroutine as a yielding coroutine for a specific time internally- after that, Hana will resume it after the given time is passed.
+Hana works by searching for `.work.luau`s in a directory which returns a function that expects a `task` library. This library is used fior scheduling coroutines.
 
 ## Usage
-
-First, import the library- this purely depends on how you install the library, however, the standard way is to install the whole `src` folder- after that, require its path:
-```lua
-local start = require("src/init") -- we cam rename the src to Hana
-```
-
-Now, the `start` function expects a dirPath that contains `.work.luau` files.
-
-```lua
--- workables/Printer.work.luau
-
-return function(wait)
-    while true do
-        print("I am printer", wait(1))
-    end
-end
-```
-```lua
--- .lune/runner.luau
-local start = require("src/init") 
-
-start("workables")
-print("Execution is stopped!") -- this won't execute
-```
+Currently there is no documentation, though the source code is simple enough so go take a look at it.
 
 ## Notes
 * Once a coroutine yields, it will only resume again in the next frame.
