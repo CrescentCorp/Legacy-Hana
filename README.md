@@ -4,7 +4,9 @@ Hana is an execution framework intended as a temporary solution for scheduling c
 
 Hana is built similarly to how Roblox's coroutine scheduler work as Hana acts as the main loop, so its `start` function (require("src/init")) is a yielding operation.
 
-Hana works by searching for `.work.luau`s in a directory which returns a function that expects a `task` library. This library is used fior scheduling coroutines.
+Hana works by searching for `.work.luau`s in a directory which returns a function that expects a `task` library. Hana itself is composed of two parts, the first is a scheduler and a module importer, while the second is a coroutine yielding utility that mimic Roblox's `task` library.
+
+Keep in mind that once the scheduler starts running, it will yield the calling coroutine until all imported coroutines + coroutines that were created during execution finish execution. As such, treat the calling coroutine *(or file)* as a starter function that purely starts the scheduling + all other pre/post execution.
 
 ## Usage
 Currently there is no documentation, though the source code is simple enough so go take a look at it.
