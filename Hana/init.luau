@@ -21,7 +21,9 @@ local function start(scriptDirPath: string)
 		loadedScripts[coroutine.create(require(workable:gsub(".luau", "")))] = true
 	end
 
-	for loadedFunc in loadedScripts do
+	-- we save a snapshot of the coroutines we currently imported from found workables
+	-- so that coroutines created by the imported coroutines don't get ran by this code
+	for loadedFunc in table.clone(loadedScripts) do
 		coroutine.resume(loadedFunc, taskObj)
 		loadedScripts[loadedFunc] = getCoroutineActiveness(loadedFunc)
 	end

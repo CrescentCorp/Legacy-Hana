@@ -11,23 +11,30 @@ return function(yields, loadedScripts)
         local co = coroutine.create(fn)
 
         loadedScripts[co] = true
-        coroutine.resume(co, ...)
+        coroutine.resume(co, ...) 
+
+        return co
     end
 
     function self.delay(time: number, fn)
-        self.spawn(function()
+        return self.spawn(function()
             self.wait(time)
             fn()
         end)
     end
 
     function self.every(time, fn)
-        self.spawn(function()
+        return self.spawn(function()
             while true do
                 self.wait(time)
                 fn()
             end
         end)
+    end
+
+    function self.close(co)
+        loadedScripts[co] = nil
+        coroutine.close(co)
     end
     return self
 end
